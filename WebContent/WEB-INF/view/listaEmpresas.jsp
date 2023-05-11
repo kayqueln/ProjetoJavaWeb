@@ -1,4 +1,4 @@
-<%@ page import="java.util.List, br.com.alura.gerenciador.servlet.Empresa" %>
+<%@ page import="java.util.List, br.com.alura.gerenciador.modelo.Empresa" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
@@ -7,6 +7,12 @@
 <title>Java standard Taglib</title>
 </head>
 <body>
+	
+	<c:import url="logout-parcial.jsp"/>
+	
+	Usuário Logado: ${usuarioLogado.login}
+	
+	<br><br>
 	
 	<c:if test="${not empty empresa}">
 		Empresa ${ empresa } cadastrada com sucesso! <br/>
@@ -18,8 +24,8 @@
 		<c:forEach items="${empresas}" var="empresa">
 			<li>
 				${empresa.nome} - <fmt:formatDate value="${empresa.dataAbertura }" pattern="dd/MM/yyyy"/>
-				<a href="mostraEmpresa?id=${empresa.id }">editar</a>
-				<a href="removeEmpresa?id=${empresa.id }">remover</a>
+				<a href="entrada?acao=MostraEmpresa&id=${empresa.id }">editar</a>
+				<a href="entrada?acao=RemoveEmpresa&id=${empresa.id }">remover</a>
 			</li>
 		</c:forEach>
 	</ul>
