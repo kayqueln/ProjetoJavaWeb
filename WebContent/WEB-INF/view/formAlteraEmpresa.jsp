@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<c:url value="/alteraEmpresa" var="linkServletEmpresa"/>
+<c:url value="/entrada?acao=AlteraEmpresa" var="linkEntradaServlet"/>
 
 
 <html>
@@ -11,14 +11,16 @@
 
 </head>
 <body>
-
-	<form action="${linkServletEmpresa}" method='POST'>
+	
+	<c:import url="logout-parcial.jsp"/>
+	
+	<form action="${linkEntradaServlet}" method='POST'>
 		
 		<input name='nome' type='text' placeholder='Nome da empresa' value="${empresa.nome }" ><br/>
 		<input name='data' type='text' placeholder='Data abertura' value="<fmt:formatDate value='${empresa.dataAbertura }' pattern='dd/MM/yyyy'/>"><br/>
 		<input name='id' type="hidden" value="${empresa.id }" >
 		
-		<button type='submit'>Cadastrar</button>
+		<button type='submit'>Atualizar</button>
 	</form>
 	
 </body>
